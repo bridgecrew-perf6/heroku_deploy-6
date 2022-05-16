@@ -1,15 +1,12 @@
 #-----------------ライブラリのインポート-------------------
 import pandas as pd
 import geopandas as gpd
-#import dask.dataframe as dd
-import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 
-from plotly.subplots import make_subplots
-import glob, os
+import os
 import datetime as dt
-from tqdm import tqdm
+
 import time
 import datetime
 import pickle
@@ -41,10 +38,10 @@ slectGenderAge = ['male15', 'male20', 'male30', 'male40', 'male50', 'male60', 'm
 # vars_cat = [var for var in df.columns if var.startswith('cat')]
 # vars_cont = [var for var in df.columns if var.startswith('cont')]
 
-server = app.server                                                             
+                                                          
                                                                    
 app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY])
-
+server = app.server   
 
 #-----------------画面左側パラメータ設定部分-------------------------------------
 sidebar = html.Div(
@@ -196,7 +193,7 @@ def analysis(date,mesh,attribute):
 
         #指定されたMonthとMeshのpklファイルのpathを取得
         df_rn_list = []
-        for num, p in tqdm(enumerate(selectMesh)):
+        for num, p in enumerate(selectMesh):
             path = 'forApp/' + str(p) + '/' + selectMonth + '.pkl'
 
             #指定されたDateをint→datetimeへ
@@ -215,7 +212,7 @@ def analysis(date,mesh,attribute):
             #columnの書き換え（異なるMeshで比較を行う場合に備えて、columnにメッシュコードを付与する。）
             column_list = list(df_target_narrowed.columns)
             n_column_list = []
-            for k in tqdm(column_list):
+            for k in column_list:
                 if k == 'date':
                     n = k
                 else:
@@ -240,7 +237,7 @@ def analysis(date,mesh,attribute):
         print("異なる日付を比較する機能はまだ未完成です。。。")
         
     data = []
-    for col in tqdm(df_target_result.columns[1:]):
+    for col in df_target_result.columns[1:]:
         if col != 'date':
             data.append(go.Scatter(x=df_target_result['date'],
                                   y=df_target_result[col],
