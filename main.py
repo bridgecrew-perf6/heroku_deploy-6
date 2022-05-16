@@ -41,7 +41,7 @@ slectGenderAge = ['male15', 'male20', 'male30', 'male40', 'male50', 'male60', 'm
 # vars_cat = [var for var in df.columns if var.startswith('cat')]
 # vars_cont = [var for var in df.columns if var.startswith('cont')]
 
-                                                                   
+server = app.server                                                             
                                                                    
 app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY])
 
@@ -253,6 +253,6 @@ def analysis(date,mesh,attribute):
 
 #-----------------アプリを実行--------------------------
 if __name__ == "__main__":
-    app.run_server(host='127.0.0.1', port=5000)
+    app.run_server(debug=True)
     #app.run_server(mode="inline")
 #-----------------アプリを実行----終了------------------
