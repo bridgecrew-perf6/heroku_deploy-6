@@ -6,11 +6,8 @@ pandas
 numpy
 gunicorn
 geopandas
-matplotlib
-glob
 os
 datetime
-tqdm
 time
 pickle
 dash_bootstrap_components
