@@ -1,1 +1,16 @@
-$ pip freeze > requirements.txt
+dash
+dash_core_components
+dash_html_components
+plotly
+pandas
+numpy
+gunicorn
+geopandas
+matplotlib
+glob
+os
+datetime
+tqdm
+time
+pickle
+dash_bootstrap_components
